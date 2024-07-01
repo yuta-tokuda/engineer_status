@@ -2,7 +2,8 @@ name: RuboCop
 
 on:
   pull_request:
-    branches: [ main ]  # プルリクエストが作成された際にトリガーされる
+    branches:  # すべてのブランチに対応
+      - '**'
 
 jobs:
   rubocop:
