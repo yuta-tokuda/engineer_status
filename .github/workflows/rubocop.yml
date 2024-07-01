@@ -21,7 +21,7 @@ jobs:
           ruby-version: 3.3.3
           bundler-cache: true
 
-      - name: Bundler and gem install
+      - name: Install dependencies
         run: |
           gem install bundler
           bundle install
