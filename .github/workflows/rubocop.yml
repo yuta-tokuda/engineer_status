@@ -1,0 +1,26 @@
+name: RuboCop
+
+on:
+  pull_request:
+    branches: [ main ]  # プルリクエストが作成された際にトリガーされる
+
+jobs:
+  rubocop:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.3.3  # 使用するRubyのバージョンを指定する
+
+      - name: Install dependencies
+        run: |
+          gem install bundler
+          bundle install --jobs 4 --retry 3
+
+      - name: Run RuboCop
+        run: bundle exec rubocop --format simple --fail-level error
