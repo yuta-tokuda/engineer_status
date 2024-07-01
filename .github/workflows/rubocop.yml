@@ -18,13 +18,14 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.3.3
+          ruby-version: 3.2.2
           bundler-cache: true
 
       - name: Bundler and gem install
         run: |
           gem install bundler
-          bundle install 
+          bundle install
 
-      - name: Run rubocop # Rubocopを実行します。
-        run: bundle exec rubocop
+      - name: Run rubocop
+        run: |
+          bundle exec rubocop --format simple --fail-level error --display-cop-names --extra-details
