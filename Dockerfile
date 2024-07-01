@@ -1,5 +1,5 @@
 # ベースイメージとして Ruby を使用
-FROM ruby:3.2.4
+FROM ruby:3.3.3
 
 # Node.js と Yarn をインストール
 RUN curl -sL https://deb.nodesource.com/setup_16.x | bash -
