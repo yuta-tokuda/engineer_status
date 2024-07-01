@@ -48,12 +48,20 @@ gem "bootsnap", require: false
 
 # ===================================================
 
+
 group :development, :test do
   # ======== rails new時に追加されるgem =========
 
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ]
 
+  # ===================================================
+
+  # ======== コードチェック =========
+  gem 'rubocop', require: false
+  gem 'rubocop-performance', require: false
+  gem 'rubocop-rails', require: false
+  gem 'rubocop-rspec', require: false
   # ===================================================
 end
 
