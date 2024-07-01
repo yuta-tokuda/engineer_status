@@ -8,20 +8,24 @@ on:
 jobs:
   rubocop:
     runs-on: ubuntu-latest
-
+    defaults:
+      run:
+        working-directory: .
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v3
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.3.3  # 使用するRubyのバージョンを指定する
+          ruby-version: 3.3.3
+          bundler-cache: true
 
-      - name: Install dependencies
+      - name: Bundler and gem install
         run: |
           gem install bundler
-          bundle install --jobs 4 --retry 3
+          bundle install
 
-      - name: Run RuboCop
-        run: bundle exec rubocop --format simple --fail-level error
+      - name: Run rubocop
+        run: |
+          bundle exec rubocop --format simple --fail-level error --display-cop-names --extra-details
