@@ -63,6 +63,10 @@ group :development, :test do
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
   # ===================================================
+
+  # ======== DB関連 =========
+  gem 'annotate', require: false # モデルのカラム情報をコメントアウトで追加
+  # ===================================================
 end
 
 group :development do
