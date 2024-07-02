@@ -48,6 +48,7 @@ gem "bootsnap", require: false
 
 # ===================================================
 
+gem 'webpacker'
 
 group :development, :test do
   # ======== rails new時に追加されるgem =========
