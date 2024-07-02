@@ -11,4 +11,4 @@ $ docker-compose run web rails webpacker:install:react
 
 ## docker起動
 
-```docker-compose up --build```
+```$ docker-compose up --build```
