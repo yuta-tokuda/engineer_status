@@ -2,30 +2,20 @@ name: RuboCop
 
 on:
   pull_request:
-    branches:  # すべてのブランチに対応
+    branches:
       - '**'
 
 jobs:
   rubocop:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: .
+    timeout-minutes: 10
+
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
 
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: 3.2.4
-          bundler-cache: true
+      - name: Build Docker image
+        run: docker compose build web
 
-      - name: Install dependencies
-        run: |
-          gem install bundler
-          bundle install
-
-      - name: Run rubocop
-        run: |
-          bundle exec rubocop --format simple --fail-level error --display-cop-names --extra-details
+      - name: Run Rubocop
+        run: docker compose run web bundle exec rubocop
