@@ -49,8 +49,8 @@ gem "bootsnap", require: false
 # ===================================================
 
 # ======== テンプレートエンジン =========
-gem 'webpacker' # Webpacker
 gem 'react-rails' # React
+gem 'webpacker' # Webpacker
 # ===================================================
 
 group :development, :test do
